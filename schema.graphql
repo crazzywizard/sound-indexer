@@ -1,0 +1,28 @@
+type EventsSummary {
+  id: ID!
+  soundCreatorV2_Created: [SoundCreatorV2_Created!]! @derivedFrom(field: "eventsSummary")
+  soundCreatorV2_CreatedCount: BigInt!
+  soundEdition_Minted: [SoundEdition_Minted!]! @derivedFrom(field: "eventsSummary")
+  soundEdition_MintedCount: BigInt!
+}
+
+type SoundCreatorV2_Created {
+  id: ID!
+  implementation: String!
+  edition: String!
+  owner: String!
+  initData: String!
+  contracts: [String!]!
+  data: [String!]!
+  results: [String!]!
+  eventsSummary: String!
+}
+
+type SoundEdition_Minted {
+  id: ID!
+  tier: BigInt!
+  to: String!
+  quantity: BigInt!
+  fromTokenId: BigInt!
+  eventsSummary: String!
+}
