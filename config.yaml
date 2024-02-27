@@ -1,38 +1,29 @@
 name: sound-indexer
 contracts:
-- name: SoundCreatorV2
-  handler: src/EventHandlers.ts
-  events:
-  - event: Created(address indexed implementation, address indexed edition, address indexed owner, bytes initData, address[] contracts, bytes[] data, bytes[] results)
-- name: SoundEdition
-  handler: src/EventHandlers.ts
-  events:
-  - event: Minted(uint8 tier, address to, uint256 quantity, uint256 fromTokenId)
+  - name: SoundCreatorV2
+    handler: src/EventHandlers.ts
+    events:
+      - event: Created(address indexed implementation, address indexed edition, address indexed owner, bytes initData, address[] contracts, bytes[] data, bytes[] results)
+  - name: SoundEdition
+    handler: src/EventHandlers.ts
+    events:
+      - event: Minted(uint8 tier, address to, uint256 quantity, uint256 fromTokenId)
 networks:
-- id: 1
-  start_block: 0
-  contracts:
-  - name: SoundCreatorV2
-    address:
-    - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
-  - name: SoundEdition
-    address:
-    - '0x000000000053C8B49473BDa4b8d1DC47CAb411CC'
-- id: 10
-  start_block: 0
-  contracts:
-  - name: SoundCreatorV2
-    address:
-    - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
-  - name: SoundEdition
-    address:
-    - '0x000000000053C8B49473BDa4b8d1DC47CAb411CC'
-- id: 8453
-  start_block: 0
-  contracts:
-  - name: SoundCreatorV2
-    address:
-    - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
-  - name: SoundEdition
-    address:
-    - '0x000000000053C8B49473BDa4b8d1DC47CAb411CC'
+  - id: 1
+    start_block: 0
+    contracts:
+      - name: SoundCreatorV2
+        address:
+          - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
+  - id: 10
+    start_block: 0
+    contracts:
+      - name: SoundCreatorV2
+        address:
+          - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
+  - id: 8453
+    start_block: 0
+    contracts:
+      - name: SoundCreatorV2
+        address:
+          - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
