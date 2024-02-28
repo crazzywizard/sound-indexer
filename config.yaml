@@ -15,15 +15,18 @@ networks:
       - name: SoundCreatorV2
         address:
           - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
+      - name: SoundEdition
   - id: 10
     start_block: 0
     contracts:
       - name: SoundCreatorV2
         address:
           - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
+      - name: SoundEdition
   - id: 8453
     start_block: 0
     contracts:
       - name: SoundCreatorV2
         address:
           - '0x0000000000aec84F5BFc2af15EAfb943bf4e3522'
+      - name: SoundEdition
