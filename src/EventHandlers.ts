@@ -68,9 +68,9 @@ SoundEditionContract_Transfer_handler(({ event, context }) => {
 
   const soundEdition_TransferEntity: SoundEdition_TransferEntity = {
     id: event.transactionHash + event.logIndex.toString(),
-    from: event.params._from,
-    to: event.params._to,
-    value: event.params._value,
+    from: event.params.from,
+    to: event.params.to,
+    tokenId: event.params.tokenId,
     eventsSummary: GLOBAL_EVENTS_SUMMARY_KEY
   };
 

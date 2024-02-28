@@ -22,6 +22,6 @@ type SoundEdition_Transfer {
   id: ID!
   from: String!
   to: String!
-  value: BigInt!
+  tokenId: BigInt!
   eventsSummary: String!
 }
