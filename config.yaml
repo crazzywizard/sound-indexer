@@ -7,7 +7,7 @@ contracts:
   - name: SoundEdition
     handler: src/EventHandlers.ts
     events:
-      - event: Minted(uint8 tier, address to, uint256 quantity, uint256 fromTokenId)
+      - event: Transfer(address _from, address _to, uint256 _value)
 networks:
   - id: 1
     start_block: 0

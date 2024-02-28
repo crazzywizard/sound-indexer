@@ -4,13 +4,13 @@
 import {
   SoundCreatorV2Contract_Created_loader,
   SoundCreatorV2Contract_Created_handler,
-  SoundEditionContract_Minted_loader,
-  SoundEditionContract_Minted_handler
+  SoundEditionContract_Transfer_handler,
+  SoundEditionContract_Transfer_loader
 } from '../generated/src/Handlers.gen';
 
 import {
   SoundCreatorV2_CreatedEntity,
-  SoundEdition_MintedEntity,
+  SoundEdition_TransferEntity,
   EventsSummaryEntity
 } from '../generated/src/Types.gen';
 
@@ -19,7 +19,7 @@ export const GLOBAL_EVENTS_SUMMARY_KEY = 'GlobalEventsSummary';
 const INITIAL_EVENTS_SUMMARY: EventsSummaryEntity = {
   id: GLOBAL_EVENTS_SUMMARY_KEY,
   soundCreatorV2_CreatedCount: BigInt(0),
-  soundEdition_MintedCount: BigInt(0)
+  soundEdition_TransferCount: BigInt(0)
 };
 
 SoundCreatorV2Contract_Created_loader(({ event, context }) => {
@@ -52,29 +52,28 @@ SoundCreatorV2Contract_Created_handler(({ event, context }) => {
   context.EventsSummary.set(nextSummaryEntity);
   context.SoundCreatorV2_Created.set(soundCreatorV2_CreatedEntity);
 });
-SoundEditionContract_Minted_loader(({ event, context }) => {
+SoundEditionContract_Transfer_loader(({ event, context }) => {
   context.EventsSummary.load(GLOBAL_EVENTS_SUMMARY_KEY);
 });
 
-SoundEditionContract_Minted_handler(({ event, context }) => {
+SoundEditionContract_Transfer_handler(({ event, context }) => {
   const summary = context.EventsSummary.get(GLOBAL_EVENTS_SUMMARY_KEY);
 
   const currentSummaryEntity: EventsSummaryEntity = summary ?? INITIAL_EVENTS_SUMMARY;
 
   const nextSummaryEntity = {
     ...currentSummaryEntity,
-    soundEdition_MintedCount: currentSummaryEntity.soundEdition_MintedCount + BigInt(1)
+    soundEdition_MintedCount: currentSummaryEntity.soundEdition_TransferCount + BigInt(1)
   };
 
-  const soundEdition_MintedEntity: SoundEdition_MintedEntity = {
+  const soundEdition_TransferEntity: SoundEdition_TransferEntity = {
     id: event.transactionHash + event.logIndex.toString(),
-    tier: event.params.tier,
-    to: event.params.to,
-    quantity: event.params.quantity,
-    fromTokenId: event.params.fromTokenId,
+    from: event.params._from,
+    to: event.params._to,
+    value: event.params._value,
     eventsSummary: GLOBAL_EVENTS_SUMMARY_KEY
   };
 
   context.EventsSummary.set(nextSummaryEntity);
-  context.SoundEdition_Minted.set(soundEdition_MintedEntity);
+  context.SoundEdition_Transfer.set(soundEdition_TransferEntity);
 });
