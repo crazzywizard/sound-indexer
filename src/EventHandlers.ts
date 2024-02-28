@@ -24,7 +24,7 @@ const INITIAL_EVENTS_SUMMARY: EventsSummaryEntity = {
 
 SoundCreatorV2Contract_Created_loader(({ event, context }) => {
   context.EventsSummary.load(GLOBAL_EVENTS_SUMMARY_KEY);
-  context.log.info(`SoundCreatorV2Contract_Created_loader ${event.params}`);
+  context.log.debug(`Contract: ${event.params.contracts[0]}`);
   context.contractRegistration.addSoundEdition(event.params.contracts[0]);
 });
 
@@ -59,7 +59,7 @@ SoundEditionContract_Transfer_loader(({ event, context }) => {
 
 SoundEditionContract_Transfer_handler(({ event, context }) => {
   const summary = context.EventsSummary.get(GLOBAL_EVENTS_SUMMARY_KEY);
-
+  context.log.debug(`${event.params.tokenId.toString()}`);
   const currentSummaryEntity: EventsSummaryEntity = summary ?? INITIAL_EVENTS_SUMMARY;
 
   const nextSummaryEntity = {
