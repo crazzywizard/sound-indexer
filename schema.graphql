@@ -33,5 +33,7 @@ type SoundEdition_Transfer {
   transactionHash: String!
   blockHash: String!
   timestamp: BigInt!
+  txOrigin: String!
+  srcAddress: String!
   eventsSummary: String!
 }

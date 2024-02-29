@@ -64,14 +64,12 @@ SoundEditionContract_Transfer_loader(({ event, context }) => {
 
 SoundEditionContract_Transfer_handler(({ event, context }) => {
   const summary = context.EventsSummary.get(GLOBAL_EVENTS_SUMMARY_KEY);
-  context.log.debug(`${event.params.tokenId.toString()}`);
   const currentSummaryEntity: EventsSummaryEntity = summary ?? INITIAL_EVENTS_SUMMARY;
 
   const nextSummaryEntity = {
     ...currentSummaryEntity,
-    soundEdition_MintedCount: currentSummaryEntity.soundEdition_TransferCount + BigInt(1)
+    soundEdition_TransferCount: currentSummaryEntity.soundEdition_TransferCount + BigInt(1)
   };
-
   const soundEdition_TransferEntity: SoundEdition_TransferEntity = {
     id: event.transactionHash + event.logIndex.toString(),
     from: event.params.from,
@@ -82,6 +80,8 @@ SoundEditionContract_Transfer_handler(({ event, context }) => {
     blockHash: event.blockHash,
     transactionHash: event.transactionHash,
     timestamp: event.blockTimestamp as any as bigint,
+    srcAddress: event.srcAddress,
+    txOrigin: event.txOrigin,
     eventsSummary: GLOBAL_EVENTS_SUMMARY_KEY
   };
 
