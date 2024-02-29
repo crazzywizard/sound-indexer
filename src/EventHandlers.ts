@@ -53,7 +53,7 @@ SoundCreatorV2Contract_Created_handler(({ event, context }) => {
   context.SoundCreatorV2_Created.set(soundCreatorV2_CreatedEntity);
 });
 SoundEditionContract_Transfer_loader(({ event, context }) => {
-  context.log.debug(`Loading transfer event: ${JSON.stringify(event)}`);
+  context.log.debug(`Loading Transfer Event ${event.transactionHash}`);
   context.EventsSummary.load(GLOBAL_EVENTS_SUMMARY_KEY);
 });
 
