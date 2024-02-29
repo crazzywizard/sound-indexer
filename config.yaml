@@ -7,7 +7,7 @@ contracts:
   - name: SoundEdition
     handler: src/EventHandlers.ts
     events:
-      - event: Transfer(address from, address to, uint256 tokenId)
+      - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
 networks:
   - id: 1
     start_block: 0

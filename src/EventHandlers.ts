@@ -24,7 +24,6 @@ const INITIAL_EVENTS_SUMMARY: EventsSummaryEntity = {
 
 SoundCreatorV2Contract_Created_loader(({ event, context }) => {
   context.EventsSummary.load(GLOBAL_EVENTS_SUMMARY_KEY);
-  context.log.debug(`Contract: ${event.params.contracts[0]}`);
   context.contractRegistration.addSoundEdition(event.params.contracts[0]);
 });
 
