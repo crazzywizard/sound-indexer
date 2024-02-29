@@ -46,6 +46,11 @@ SoundCreatorV2Contract_Created_handler(({ event, context }) => {
     contracts: event.params.contracts,
     data: event.params.data,
     results: event.params.results,
+    chainId: event.chainId as any as bigint,
+    blockNumber: event.blockNumber as any as bigint,
+    blockHash: event.blockHash,
+    transactionHash: event.transactionHash,
+    timestamp: event.blockTimestamp as any as bigint,
     eventsSummary: GLOBAL_EVENTS_SUMMARY_KEY
   };
 
@@ -72,6 +77,11 @@ SoundEditionContract_Transfer_handler(({ event, context }) => {
     from: event.params.from,
     to: event.params.to,
     tokenId: event.params.tokenId,
+    chainId: event.chainId as any as bigint,
+    blockNumber: event.blockNumber as any as bigint,
+    blockHash: event.blockHash,
+    transactionHash: event.transactionHash,
+    timestamp: event.blockTimestamp as any as bigint,
     eventsSummary: GLOBAL_EVENTS_SUMMARY_KEY
   };
 

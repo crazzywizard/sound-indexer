@@ -15,6 +15,11 @@ type SoundCreatorV2_Created {
   contracts: [String!]!
   data: [String!]!
   results: [String!]!
+  chainId: BigInt!
+  blockNumber: BigInt!
+  transactionHash: String!
+  blockHash: String!
+  timestamp: BigInt!
   eventsSummary: String!
 }
 
@@ -23,5 +28,10 @@ type SoundEdition_Transfer {
   from: String!
   to: String!
   tokenId: BigInt!
+  chainId: BigInt!
+  blockNumber: BigInt!
+  transactionHash: String!
+  blockHash: String!
+  timestamp: BigInt!
   eventsSummary: String!
 }
