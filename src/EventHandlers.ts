@@ -80,8 +80,8 @@ SoundEditionContract_Transfer_handler(({ event, context }) => {
     blockHash: event.blockHash,
     transactionHash: event.transactionHash,
     timestamp: event.blockTimestamp as any as bigint,
-    srcAddress: event.srcAddress,
-    txOrigin: event.txOrigin as any,
+    srcAddress: event?.srcAddress || '',
+    txOrigin: event?.txOrigin || '',
     eventsSummary: GLOBAL_EVENTS_SUMMARY_KEY
   };
 
